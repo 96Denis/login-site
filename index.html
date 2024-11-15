@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectare Abonament</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     
+    <header>
+        <img src="https://th.bing.com/th/id/OIG.TdH1qpOwmdbmLp54rsUE?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Logo" class="logo">
+        <a href="https://youtu.be/I--CePxupfI?si=Ep3oKXgq1CDWISwa"> <div class="music-banner">Muzică romanească</div></a>
+    </header>
+    
+
+<div class="pricing-container">
+    <h2>Alegeți un abonament</h2>
+
+    <div class="plan" onclick="platire()">
+        <h3>Abonament de bază</h3>
+        <p>Acces limitat la 8 ore/zi </p>
+        <p>Preț: 0.99lei/lună</p>
+    </div>
+
+    <div class="plan" onclick="platire()">
+        <h3>Abonament Standard</h3>
+        <p>Acces limitat la 12 ore/zi + Playlist-uri personalizate </p>
+        <p>Preț: 10 lei/lună</p>
+    </div>
+
+    <div class="plan" onclick="platire()">
+        <h3>Abonament Premium</h3>
+        <p>Acces nelimitat + Status VIP + Early Acces</p>
+        <p>Preț: 100 lei/lună</p>
+    </div>
+    <button id="conectareButton" class="login-button">Conectare</button>
+</div>
+<script src="script.js"></script>
+<script>
+    document.getElementById('conectareButton').addEventListener('click', function() {
+        window.location.href = 'http://localhost/conectare.html';
+    });
+</script>
+</body>
+</html>

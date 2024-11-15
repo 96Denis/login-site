@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Plata abonament</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('fundal.jpg');
+        }
+
+        .card {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <form id="paymentForm" action="plata.php" method="post">
+        <label for="cardNumber">Număr card:</label>
+        <input type="text" id="cardNumber" name="cardNumber" placeholder="xxxx-xxxx-xxxx-xxxx" maxlength="19" oninput="formatCardNumber(this)" required>
+
+        <label for="expiryDate">Data expirării:</label>
+        <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" oninput="formatExpiryDate(this)" required>
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+
+        <button type="submit">Plătește</button>
+    </form>
+</div>
+
+<script>
+    function formatCardNumber(input) {
+        // eliminarea caracterele non-numerice
+        var cardNumber = input.value.replace(/\D/g, '');
+
+        // adaugarea unui spațiu sau cratimă după fiecare grup de 4 cifre
+        cardNumber = cardNumber.replace(/(\d{4})/g, '$1-').trim();
+
+        // eliminarea eventualele cratime de la sfârșit
+        cardNumber = cardNumber.replace(/-$/, '');
+
+        // actualizarea valorii câmpului de input
+        input.value = cardNumber;
+    }
+
+    function formatExpiryDate(input) {
+        // eliminarea tuturor caracterele non-numerice
+        var expiryDate = input.value.replace(/\D/g, '');
+
+        // Adaugarea '/' între primele 2 și ultimele 2 cifre
+        expiryDate = expiryDate.replace(/(\d{2})(\d{2})/, '$1/$2');
+
+        // Actualizarea valoarii câmpului de input
+        input.value = expiryDate;
+    }
+</script>
+
+</body>
+</html>
